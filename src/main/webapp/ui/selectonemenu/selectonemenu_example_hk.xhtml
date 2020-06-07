@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="2" >
+			<p:outputLabel value="Contoh HK Kota : "/>
+			<p:selectOneMenu id="city" value="#{selectOneMenuView.city}">
+				<f:selectItem itemLabel="Pilih kota" itemValue="" />
+				<f:selectItems value="#{selectOneMenuView.listCity}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Basic : "/>
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Kerjakan ini dari contoh basic" itemValue="" />
+			</p:selectOneMenu>
+
+
+			<p:outputLabel value="RTL : "/>
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Kerjakan ini dari contoh RTL" itemValue="" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Grouping: : "/>
+			<p:selectOneMenu >
+				<f:selectItem itemLabel="Kerjakan ini dari contoh Grouping" itemValue="" />
+			</p:selectOneMenu>
+			</p:panelGrid>
+			<p:link value="link primefaces" href="http://primefaces.org/showcase/ui/input/oneMenu.xhtml" target="blank"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template2.xhtml">
+	<ui:define name="content">
+	
+	
+	<script type="text/javascript">    
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix:'',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+
+
+
+<h:form id="formInput">
+		<br />
+		<h3>Pengeluaran</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.id_pengeluaran}" placeholder="id_pengeluaran" />
+		<br /> 
+<!-- 		<p:outputLabel for="button" value="Tanggal:" />
+        <p:calendar id="button" value="#{dtBasicViewPengeluaran.pengeluaran.tanggal_pilih2}" showOn="button" />
+		<br/> -->
+		<h3>Tanggal</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.tanggal_pilih2}" placeholder="tanggal_pilih2" />
+		<br/>
+		<h3>Transportasi</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.transportasi}" placeholder="transportasi" />
+		<br />
+		<h3>Makanan</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.makanan}" placeholder="makanan" />
+		<br/>
+		<h3>Kesehatan</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.kesehatan}" placeholder="kesehatan" />
+		<br/>
+		<h3>Kecantiakan</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.kecantikan}" placeholder="kecantikan" />
+		<br/>
+		<h3>Pakaian</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.pakaian}" placeholder="pakaian" />
+		<br/>
+		<h3>Komunikasi</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.komunikasi}" placeholder="komunikasi" />
+		<br/>
+		<h3>Lainnya</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.lainnya}" placeholder="lainnya" />
+		<br/>
+		<h3>Jumlah</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.jumlah}" placeholder="jumlah" />
+		<br/>
+		<h3>Catatan</h3>
+		<p:inputText value="#{dtBasicViewPengeluaran.pengeluaran.catatan}" placeholder="catatan" />
+		<br/>
+		<br/>
+			<p:commandButton value="Add Data"
+				actionListener="#{dtBasicViewPengeluaran.add()}" update=":idFormTabel:idTabel, :formInput" />
+				
+			<p:commandButton value="Update Data"
+				actionListener="#{dtBasicViewPengeluaran.update()}" update=":idFormTabel:idTabel, :formInput" />
+
+			<p:commandButton value="Hapus Data"
+				actionListener="#{dtBasicViewPengeluaran.delete()}" hapus=":idFormTabel:idTabel, :formInput" />
+			<p:commandButton value="Cari ID"
+				actionListener="#" hapus=":idFormTabel:idTabel, :formInput" />
+		</h:form>
+		
+		<br />
+ 
+
+		<h:form id="idFormTabel">
+			<p:dataTable var="pengeluaran" value="#{dtBasicViewPengeluaran.listPengeluaran}" id="idTabel"
+				rowIndexVar="noIncrement">
+				<p:column headerText="No.">
+					<p:outputLabel value="#{noIncrement+1}" />
+				</p:column>
+				<p:column headerText="Id" colspan="3">
+					<h:outputText value="#{pengeluaran.id_pengeluaran}" />
+				</p:column>
+				
+				<p:column headerText="Tanggal" sortBy="#{pengeluaran.tanggal_pilih}">
+					<h:outputText value="#{pengeluaran.tanggal_pilih}" />
+				</p:column>
+				
+				<p:column headerText="Transportasi">
+					<h:outputText value="#{pengeluaran.transportasi}" />
+				</p:column>
+
+				<p:column headerText="Makanan">
+					<h:outputText value="#{pengeluaran.makanan}" />
+				</p:column>
+				
+				<p:column headerText="Kesehatan">
+					<h:outputText value="#{pengeluaran.kesehatan}" />
+				</p:column>
+				
+				<p:column headerText="Kecantikan">
+					<h:outputText value="#{pengeluaran.kecantikan}" />
+				</p:column>
+				
+				<p:column headerText="Pakaian">
+					<h:outputText value="#{pengeluaran.pakaian}" />
+				</p:column>
+				
+				<p:column headerText="Komunikasi">
+					<h:outputText value="#{pengeluaran.komunikasi}" />
+				</p:column>
+				
+				<p:column headerText="Lainnya">
+					<h:outputText value="#{pengeluaran.lainnya}" />
+				</p:column>
+				
+				<p:column headerText="Jumlah" sortBy="#{pengeluaran.jumlah}">
+					<h:outputText value="#{pengeluaran.jumlah}" />
+				</p:column>
+				
+				<p:column headerText="Catatan">
+					<h:outputText value="#{pengeluaran.catatan}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

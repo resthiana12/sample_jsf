@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<div style="text-align: center;
+					 position: center; 
+					 margin-top: 50px;
+					 ">
+			<h:form>
+				<h:outputLabel value="SELAMAT DATANG DI MONEY MANAGER"
+					style="center" />
+				<br />
+				<br />
+				<h:graphicImage library="" name="money.png" width="100px"/>
+				<br/>
+				<br/>
+				<p:commandButton value="Pendapatan"
+					actionListener="#{loginBean.doPendapatan()}" />
+				<p:commandButton value="Pengeluaran"
+					actionListener="#{loginBean.doPengeluaran()}" />
+				<br />
+				<br />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

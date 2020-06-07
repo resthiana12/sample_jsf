@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template2.xhtml">
+	<ui:define name="content">
+
+
+		<script type="text/javascript">    
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix:'',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+
+
+
+		<h:form id="formInput">
+			<br />
+			<h3>Pendapatan</h3>
+			<p:inputText value="#{dtBasicView.pendapatan.id_pendapatan}"
+				placeholder="id_pendapatan" />
+			<br />
+			<p:inputText value="#{dtBasicView.pendapatan.tanggal1}"
+				placeholder="tahun-bulan-tanggal" />
+			<br />
+			<p:inputText value="#{dtBasicView.pendapatan.jumlah}"
+				placeholder="jumlah" />
+			<br />
+			<p:inputText value="#{dtBasicView.pendapatan.catatan}"
+				placeholder="catatan" />
+
+			<br />
+			<br />
+			<p:commandButton value="Add Data"
+				actionListener="#{dtBasicView.add()}"
+				update=":idFormTabel:idTabel, :formInput" />
+
+			<p:commandButton value="Update Data"
+				actionListener="#{dtBasicView.update()}"
+				update=":idFormTabel:idTabel, :formInput" />
+
+			<p:commandButton value="Hapus Data"
+				actionListener="#{dtBasicView.delete()}"
+				hapus=":idFormTabel:idTabel, :formInput" />
+			<p:commandButton value="Cari ID" actionListener="#"
+				hapus=":idFormTabel:idTabel, :formInput" />
+		</h:form>
+
+		<br />
+
+
+		<h:form id="idFormTabel">
+			<p:dataTable var="pendapatan" value="#{dtBasicView.listPendapatan}"
+				id="idTabel" rowIndexVar="noIncrement">
+				<p:column headerText="No.">
+					<p:outputLabel value="#{noIncrement+1}" />
+				</p:column>
+				<p:column headerText="Id" colspan="3">
+					<h:outputText value="#{pendapatan.id_pendapatan}" />
+				</p:column>
+
+				<p:column headerText="Tanggal" sortBy="#{pendapatan.tanggal}">
+					<h:outputText value="#{pendapatan.tanggal}" />
+				</p:column>
+
+				<p:column headerText="Jumlah" sortBy="#{pendapatan.jumlah}">
+					<h:outputText value="#{pendapatan.jumlah}" />
+				</p:column>
+
+				<p:column headerText="Catatan">
+					<h:outputText value="#{pendapatan.catatan}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<h3>Total Saldo</h3>
+<!-- 		<p:outputLabel value="#"/> -->
+
+	</ui:define>
+</ui:composition>
+</html>
